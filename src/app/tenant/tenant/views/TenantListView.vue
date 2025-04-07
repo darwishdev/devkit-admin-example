@@ -1,0 +1,1 @@
+<template>tenant list</template>
