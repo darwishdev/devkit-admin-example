@@ -1,12 +1,15 @@
 
 import { createInput, defaultConfig } from '@formkit/vue'
 import { Dropdown, SelectButton, MultiDropdown, Datepicker } from 'devkit-admin/form'
-import InputImage from './components/InputImage.vue'
 
 import { rootClasses } from './formkit.theme'
 import { ar, en } from '@formkit/i18n'
 
 import type { FormKitPlugin } from '@formkit/core';
+import InputEditor from './components/InputEditor.vue';
+
+import { createProPlugin, inputs } from '@formkit/pro'
+const pro = createProPlugin(import.meta.env.VITE_FORMKIT_TOKEN, inputs)
 const isCheckboxAndRadioMultiple: FormKitPlugin = (node: any) => (node.props.type === 'checkbox' || node.props.type === 'radio') && node.props.options
 const addAsteriskPlugin = (node: any) => {
   node.on('created', () => {
@@ -35,6 +38,7 @@ const addAsteriskPlugin = (node: any) => {
 const formKitConfig = () => {
   const plugins: FormKitPlugin[] = [
     addAsteriskPlugin,
+    pro,
   ]
   const commonDropdownProps = [
     "options",
@@ -224,16 +228,20 @@ const formKitConfig = () => {
     props: datepickerContextKeys,
   })
 
-  const imageInput = createInput(InputImage, {
-    props: [''],
+  const editorInput = createInput(InputEditor, {
+    props: ['primeProps'],
   })
+  // const imageInput = createInput(InputImage, {
+  //   props: [''],
+  // })
 
   const inputs = {
     'devkitDropdown': dropdownInput,
     'devkitSelectButton': selectButtonInput,
     'devkitMultiDropdown': multDropdownInput,
     'devkitDatepicker': datePickerInput,
-    'devkitImage': imageInput,
+    'devkitEditor': editorInput
+    // 'devkitImage': imageInput,
 
   }
   return defaultConfig({

@@ -2,7 +2,8 @@ import { VueQueryPlugin } from '@tanstack/vue-query'
 import PrimeVue from 'primevue/config';
 import { createI18n } from 'vue-i18n'
 import { apiClient } from './api/apiClient';
-import router from './routes';
+import router from './router/index';
+import './pkg/style/index.css'
 import { QueryClient } from '@tanstack/vue-query'
 import { DialogService } from 'primevue';
 import { ToastService } from 'primevue';
@@ -11,6 +12,8 @@ import { plugin } from '@formkit/vue'
 import formkitConfig from './formkit.config'
 import DevkitAdminPlugin, { type DevkitAdminConfig } from 'devkit-admin';
 import DevkitBaseComponentsPlugin, { type DevkitBaseConfig } from 'devkit-base-components';
+import App from './App.vue';
+import { createApp } from 'vue';
 const pinia = createPinia()
 const app = createApp(App)
 
@@ -57,7 +60,7 @@ const i18n = createI18n({
   }
 })
 app.use(PrimeVue, {
-  theme: 'none'
+  theme: 'none',
 }).use(i18n)
 app.use(router)
   .use(DevkitAdminPlugin, adminConfig)
