@@ -3,9 +3,9 @@
 import type { AppFormSections } from "devkit-admin/form";
 import Datalist, {
 	ColumnText,
-	ColumnDate,
 	type DatalistColumnsBase,
 	type DatalistProps,
+	ColumnImage,
 } from "devkit-admin/datalist";
 
 import { useI18n } from "vue-i18n";
@@ -28,17 +28,11 @@ const formSections: AppFormSections<PartialCreateUpdateRequest> = {
 				placeholder: t("partialName"),
 			},
 			{
-				$formkit: "text",
-				prefixIcon: "edit",
-				outerClass: "col-12 sm:col-6 md:col-4",
-				name: "partialNameAr",
-				validation: "required",
-				label: t("partialNameAr"),
-				placeholder: t("partialNameAr"),
-			},
-			{
-				$formkit: "number",
+				$formkit: "devkitDropdown",
 				prefixIcon: "list-ordered",
+				options: 'partialTypeListInput',
+				optionValue: 'value',
+				optionLabel: 'label',
 				outerClass: "col-12 sm:col-6 md:col-4",
 				name: "partialTypeId",
 				validation: "required",
@@ -46,16 +40,19 @@ const formSections: AppFormSections<PartialCreateUpdateRequest> = {
 				placeholder: t("partialTypeId"),
 			},
 			{
-				$formkit: "number",
-				prefixIcon: "layout-grid",
+				$formkit: "devkitDropdown",
+				prefixIcon: "list-ordered",
+				options: apiClient.sectionListInpt,
+				optionValue: 'value',
+				optionLabel: 'label',
 				outerClass: "col-12 sm:col-6 md:col-4",
 				name: "sectionId",
 				validation: "required",
-				label: t("sectionId"),
-				placeholder: t("sectionId"),
+				label: t("sectionListInpt"),
+				placeholder: t("sectionListInpt"),
 			},
 			{
-				$formkit: "text",
+				$formkit: "devkitImage",
 				prefixIcon: "image",
 				outerClass: "col-12 sm:col-6 md:col-4",
 				name: "partialImage",
@@ -63,29 +60,7 @@ const formSections: AppFormSections<PartialCreateUpdateRequest> = {
 				placeholder: t("partialImage"),
 			},
 			{
-				$formkit: "text",
-				prefixIcon: "images",
-				outerClass: "col-12 sm:col-6 md:col-4",
-				name: "partialImages",
-				label: t("partialImages"),
-				placeholder: t("partialImages"),
-			},
-			{
-				$formkit: "text",
-				prefixIcon: "video",
-				outerClass: "col-12 sm:col-6 md:col-4",
-				name: "partialVideo",
-				label: t("partialVideo"),
-				placeholder: t("partialVideo"),
-			},
-			{
-				$formkit: "checkbox",
-				outerClass: "col-12 sm:col-6 md:col-4",
-				name: "isFeatured",
-				label: t("isFeatured"),
-			},
-			{
-				$formkit: "textarea",
+				$formkit: "devkitEditor",
 				prefixIcon: "file-text",
 				outerClass: "col-12 sm:col-6 md:col-4",
 				name: "partialBrief",
@@ -93,28 +68,12 @@ const formSections: AppFormSections<PartialCreateUpdateRequest> = {
 				placeholder: t("partialBrief"),
 			},
 			{
-				$formkit: "textarea",
-				prefixIcon: "file-text",
-				outerClass: "col-12 sm:col-6 md:col-4",
-				name: "partialBriefAr",
-				label: t("partialBriefAr"),
-				placeholder: t("partialBriefAr"),
-			},
-			{
-				$formkit: "textarea",
+				$formkit: "devkitEditor",
 				prefixIcon: "file-text",
 				outerClass: "col-12 sm:col-6 md:col-4",
 				name: "partialContent",
 				label: t("partialContent"),
 				placeholder: t("partialContent"),
-			},
-			{
-				$formkit: "textarea",
-				prefixIcon: "file-text",
-				outerClass: "col-12 sm:col-6 md:col-4",
-				name: "partialContentAr",
-				label: t("partialContentAr"),
-				placeholder: t("partialContentAr"),
 			},
 			{
 				$formkit: "text",
@@ -126,43 +85,11 @@ const formSections: AppFormSections<PartialCreateUpdateRequest> = {
 			},
 			{
 				$formkit: "text",
-				prefixIcon: "tag",
-				outerClass: "col-12 sm:col-6 md:col-4",
-				name: "partialButtonLabelAr",
-				label: t("partialButtonLabelAr"),
-				placeholder: t("partialButtonLabelAr"),
-			},
-			{
-				$formkit: "text",
-				prefixIcon: "aperture",
-				outerClass: "col-12 sm:col-6 md:col-4",
-				name: "partialButtonIcon",
-				label: t("partialButtonIcon"),
-				placeholder: t("partialButtonIcon"),
-			},
-			{
-				$formkit: "text",
 				prefixIcon: "link",
 				outerClass: "col-12 sm:col-6 md:col-4",
 				name: "partialButtonLink",
 				label: t("partialButtonLink"),
 				placeholder: t("partialButtonLink"),
-			},
-			{
-				$formkit: "number",
-				prefixIcon: "link",
-				outerClass: "col-12 sm:col-6 md:col-4",
-				name: "partialButtonPageId",
-				label: t("partialButtonPageId"),
-				placeholder: t("partialButtonPageId"),
-			},
-			{
-				$formkit: "text",
-				prefixIcon: "icons",
-				outerClass: "col-12 sm:col-6 md:col-4",
-				name: "partialIcons",
-				label: t("partialIcons"),
-				placeholder: t("partialIcons"),
 			},
 			{
 				$formkit: "text",
@@ -207,18 +134,8 @@ const columns: DatalistColumnsBase<TenantsSchemaPartial> = {
 			},
 		],
 	}),
-	partialTypeId: new ColumnText("partialTypeId", {
-		isSortable: true,
-	}),
-	sectionId: new ColumnText("sectionId", {
-		isSortable: true,
-	}),
-	isFeatured: new ColumnText("isFeatured", {
-		isSortable: true,
-	}),
-	createdAt: new ColumnDate("createdAt", {
-		isSortable: true,
-	}),
+
+	partialImage: new ColumnImage("partialImage", {}),
 };
 
 const rowIdentifier = "partialId" as const;
@@ -242,6 +159,21 @@ const tableProps: DatalistProps<
 			paramName: "id",
 			paramColumnName: rowIdentifier,
 		},
+		filters: [{
+			matchMode: "equals",
+			input: {
+				$formkit: "devkitDropdown",
+				prefixIcon: "list-ordered",
+				options: 'partialTypeListInput',
+				optionValue: 'value',
+				optionLabel: 'label',
+				outerClass: "col-12 sm:col-6 md:col-4",
+				name: "partialTypeId",
+				label: t("partialTypeId"),
+				placeholder: t("partialTypeId"),
+			},
+
+		}],
 		isServerSide: false,
 		isPresistFilters: true,
 		isExportable: false,
@@ -256,3 +188,19 @@ const tableProps: DatalistProps<
 <template>
 	<Datalist :context="tableProps.context" />
 </template>
+<style>
+.p-datatable img {
+	max-width: 200px !important;
+}
+
+.p-datatable-header .d-flex {
+	display: flex;
+	justify-content: space-between;
+	margin-bottom: var(--gap);
+}
+
+.global-actions {
+	display: flex;
+	gap: var(--gap);
+}
+</style>

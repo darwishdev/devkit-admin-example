@@ -9,6 +9,7 @@ import type { FormKitPlugin } from '@formkit/core';
 import InputEditor from './components/InputEditor.vue';
 
 import { createProPlugin, inputs } from '@formkit/pro'
+import InputImage from './components/InputImage.vue';
 const pro = createProPlugin(import.meta.env.VITE_FORMKIT_TOKEN, inputs)
 const isCheckboxAndRadioMultiple: FormKitPlugin = (node: any) => (node.props.type === 'checkbox' || node.props.type === 'radio') && node.props.options
 const addAsteriskPlugin = (node: any) => {
@@ -231,6 +232,10 @@ const formKitConfig = () => {
   const editorInput = createInput(InputEditor, {
     props: ['primeProps'],
   })
+
+  const imageInput = createInput(InputImage, {
+    props: [''],
+  })
   // const imageInput = createInput(InputImage, {
   //   props: [''],
   // })
@@ -240,7 +245,8 @@ const formKitConfig = () => {
     'devkitSelectButton': selectButtonInput,
     'devkitMultiDropdown': multDropdownInput,
     'devkitDatepicker': datePickerInput,
-    'devkitEditor': editorInput
+    'devkitEditor': editorInput,
+    'devkitImage': imageInput
     // 'devkitImage': imageInput,
 
   }

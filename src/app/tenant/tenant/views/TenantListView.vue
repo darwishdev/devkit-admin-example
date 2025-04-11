@@ -8,8 +8,6 @@ import { useI18n } from "vue-i18n";
 
 import { apiClient } from "@/api/apiClient";
 import { PageListRequestSchema } from "@buf/ahmeddarwish_devkit-api.bufbuild_es/devkit/v1/tenant_page_pb";
-import Editor from "primevue/editor";
-import { ref } from "vue";
 const { t } = useI18n();
 
 const formSections: AppFormSections<TenantCreateUpdateRequest> = {
@@ -60,7 +58,7 @@ const formSections: AppFormSections<TenantCreateUpdateRequest> = {
 				label: t("tenantDescription"),
 			},
 			{
-				$formkit: "file",
+				$formkit: "devkitImage",
 				accept: '.png,.svg,.webp',
 				prefixIcon: "image",
 				name: "tenantLogo",
@@ -167,7 +165,6 @@ const tableProps: DatalistProps<
 		options: { title: "asd", description: "asd" },
 	},
 };
-const value = ref('')
 </script>
 <template>
 	<Datalist :context="tableProps.context" />

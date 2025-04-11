@@ -1,7 +1,6 @@
 <script lang="ts" setup>
 import Editor, { type EditorProps } from 'primevue/editor';
-import { watchEffect, h, ref, } from "vue";
-import { useFormKitContext } from "@formkit/vue";
+import { h, ref, } from "vue";
 import { type FormKitNode } from "@formkit/core";
 export type InputEditorProps = {
   context: {
@@ -11,9 +10,6 @@ export type InputEditorProps = {
 }
 const { context } =
   defineProps<InputEditorProps>();
-const emit = defineEmits<{
-  (e: "valueChange", value: unknown): void;
-}>();
 const {
   node,
 } = context;

@@ -3,14 +3,15 @@
 import type { AppFormSections } from "devkit-admin/form";
 import Datalist, {
 	ColumnText,
-	ColumnDate,
 	type DatalistColumnsBase,
 	type DatalistProps,
+	ColumnImage,
 } from "devkit-admin/datalist";
 
 import { useI18n } from "vue-i18n";
 import { apiClient } from "@/api/apiClient";
 import type { SectionCreateUpdateRequest, SectionListRequest, TenantsSchemaSection } from "@buf/ahmeddarwish_devkit-api.bufbuild_es/devkit/v1/tenant_section_pb";
+import { ColumnRichText } from "@/pkg/utils/ColumnRichText";
 const { t } = useI18n();
 
 const formSections: AppFormSections<SectionCreateUpdateRequest> = {
@@ -28,16 +29,7 @@ const formSections: AppFormSections<SectionCreateUpdateRequest> = {
 				placeholder: t("sectionName"),
 			},
 			{
-				$formkit: "text",
-				prefixIcon: "edit",
-				outerClass: "col-12 sm:col-6 md:col-4",
-				name: "sectionNameAr",
-				validation: "required",
-				label: t("sectionNameAr"),
-				placeholder: t("sectionNameAr"),
-			},
-			{
-				$formkit: "text",
+				$formkit: "devkitEditor",
 				prefixIcon: "header",
 				outerClass: "col-12 sm:col-6 md:col-4",
 				name: "sectionHeader",
@@ -45,15 +37,7 @@ const formSections: AppFormSections<SectionCreateUpdateRequest> = {
 				placeholder: t("sectionHeader"),
 			},
 			{
-				$formkit: "text",
-				prefixIcon: "header",
-				outerClass: "col-12 sm:col-6 md:col-4",
-				name: "sectionHeaderAr",
-				label: t("sectionHeaderAr"),
-				placeholder: t("sectionHeaderAr"),
-			},
-			{
-				$formkit: "textarea",
+				$formkit: "devkitEditor",
 				prefixIcon: "align-left",
 				outerClass: "col-12 sm:col-6 md:col-4",
 				name: "sectionDescription",
@@ -61,68 +45,12 @@ const formSections: AppFormSections<SectionCreateUpdateRequest> = {
 				placeholder: t("sectionDescription"),
 			},
 			{
-				$formkit: "textarea",
-				prefixIcon: "align-left",
-				outerClass: "col-12 sm:col-6 md:col-4",
-				name: "sectionDescriptionAr",
-				label: t("sectionDescriptionAr"),
-				placeholder: t("sectionDescriptionAr"),
-			},
-			{
-				$formkit: "text",
-				prefixIcon: "tag",
-				outerClass: "col-12 sm:col-6 md:col-4",
-				name: "sectionButtonLabel",
-				label: t("sectionButtonLabel"),
-				placeholder: t("sectionButtonLabel"),
-			},
-			{
-				$formkit: "text",
-				prefixIcon: "tag",
-				outerClass: "col-12 sm:col-6 md:col-4",
-				name: "sectionButtonLabelAr",
-				label: t("sectionButtonLabelAr"),
-				placeholder: t("sectionButtonLabelAr"),
-			},
-			{
-				$formkit: "text",
-				prefixIcon: "link",
-				outerClass: "col-12 sm:col-6 md:col-4",
-				name: "sectionButtonPageId",
-				label: t("sectionButtonPageId"),
-				placeholder: t("sectionButtonPageId"),
-			},
-			{
-				$formkit: "text",
+				$formkit: "devkitImage",
 				prefixIcon: "image",
 				outerClass: "col-12 sm:col-6 md:col-4",
 				name: "sectionBackground",
 				label: t("sectionBackground"),
 				placeholder: t("sectionBackground"),
-			},
-			{
-				$formkit: "text",
-				prefixIcon: "icon",
-				outerClass: "col-12 sm:col-6 md:col-4",
-				name: "sectionIcon",
-				label: t("sectionIcon"),
-				placeholder: t("sectionIcon"),
-			},
-			{
-				$formkit: "text",
-				prefixIcon: "images",
-				outerClass: "col-12 sm:col-6 md:col-4",
-				name: "sectionImages",
-				label: t("sectionImages"),
-				placeholder: t("sectionImages"),
-			},
-			{
-				$formkit: "text",
-				prefixIcon: "store",
-				outerClass: "col-12 sm:col-6 md:col-4",
-				name: "tenantId",
-				label: t("tenantId"),
-				placeholder: t("tenantId"),
 			},
 		],
 	},
@@ -150,13 +78,10 @@ const columns: DatalistColumnsBase<TenantsSchemaSection> = {
 			},
 		],
 	}),
-	sectionHeader: new ColumnText("sectionHeader", {
+	sectionHeader: new ColumnImage("sectionBackground", {
 		isSortable: true,
 	}),
-	sectionDescription: new ColumnText("sectionDescription", {
-		isSortable: true,
-	}),
-	createdAt: new ColumnDate("createdAt", {
+	sectionDescription: new ColumnRichText("sectionHeader", {
 		isSortable: true,
 	}),
 };
