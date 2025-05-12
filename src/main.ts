@@ -17,17 +17,26 @@ import { createApp } from 'vue';
 const pinia = createPinia()
 const app = createApp(App)
 
+const baseImageUrl = import.meta.env.VITE_BASE_IMAGE_URL
+const noImageUrl = import.meta.env.VITE_FALLBACK_IMAGE_URL
 const baseConfig: DevkitBaseConfig<typeof apiClient> = {
   apiClient,
-  baseImageUrl: 'http://192.168.1.40:54321/storage/v1/object/public/',
-  noImageUrl: 'http://192.168.1.40:54321/storage/v1/object/public/images/noimg.webp',
+  baseImageUrl,
+  noImageUrl,
   locales: ['en', 'ar'],
   iconFindApi: 'iconFind'
 }
 const adminConfig: DevkitAdminConfig<typeof apiClient> = {
   apiClient,
   locales: ['en', 'ar'],
-  iconFindApi: 'iconFind'
+  iconFindApi: 'iconFind',
+  filesHandler: {
+    fileList: 'galleryList',
+    bucketList: 'bucketList',
+    bucketCreateUpdate: 'bucketCreateUpdate',
+    fileCreate: 'fileCreate',
+    fileBulkCreate: 'fileCreateBulk'
+  }
 }
 const queryClient = new QueryClient({
   defaultOptions: {

@@ -1,6 +1,6 @@
 
 import { createInput, defaultConfig } from '@formkit/vue'
-import { Dropdown, SelectButton, MultiDropdown, Datepicker } from 'devkit-admin/form'
+import { DependencyManagerPlugin, OptionsGetterPlugin, Dropdown,  Datepicker } from 'devkit-admin/form'
 
 import { rootClasses } from './formkit.theme'
 import { ar, en } from '@formkit/i18n'
@@ -12,11 +12,11 @@ import { createProPlugin, inputs } from '@formkit/pro'
 import InputImage from './components/InputImage.vue';
 const pro = createProPlugin(import.meta.env.VITE_FORMKIT_TOKEN, inputs)
 const isCheckboxAndRadioMultiple: FormKitPlugin = (node: any) => (node.props.type === 'checkbox' || node.props.type === 'radio') && node.props.options
-const addAsteriskPlugin = (node: any) => {
+const addAsteriskPlugin: FormKitPlugin = (node) => {
   node.on('created', () => {
     const isRequired = node.props.parsedRules.some((rule: any) => rule.name === 'required');
-    if (!isRequired) return
-
+    if (!isRequired || !node.props) return
+    if (!node.props.definition) return
     const isMultiOption = isCheckboxAndRadioMultiple(node)
     node.props.definition.schemaMemoKey = `required_${isMultiOption ? 'multi_' : ""}${node.props.definition.schemaMemoKey}`
     const schemaFn = node.props.definition.schema;
@@ -39,6 +39,8 @@ const addAsteriskPlugin = (node: any) => {
 const formKitConfig = () => {
   const plugins: FormKitPlugin[] = [
     addAsteriskPlugin,
+    DependencyManagerPlugin,
+    OptionsGetterPlugin,
     pro,
   ]
   const commonDropdownProps = [
@@ -119,6 +121,8 @@ const formKitConfig = () => {
     ...commonDropdownProps,
     "editable",
     "inputStyle",
+    'multiple',
+    'useButtons',
     "inputClass",
     "labelId",
     "labelStyle",
@@ -217,13 +221,6 @@ const formKitConfig = () => {
     props: singleDropdownProps,
   })
 
-  const multDropdownInput = createInput(MultiDropdown, {
-    props: multiDropdownProps,
-  })
-
-  const selectButtonInput = createInput(SelectButton, {
-    props: singleDropdownProps,
-  })
 
   const datePickerInput = createInput(Datepicker, {
     props: datepickerContextKeys,
@@ -242,8 +239,6 @@ const formKitConfig = () => {
 
   const inputs = {
     'devkitDropdown': dropdownInput,
-    'devkitSelectButton': selectButtonInput,
-    'devkitMultiDropdown': multDropdownInput,
     'devkitDatepicker': datePickerInput,
     'devkitEditor': editorInput,
     'devkitImage': imageInput

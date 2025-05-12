@@ -1,7 +1,14 @@
 <script lang="ts" setup>
-import { AppImage } from 'devkit-base-components';
+import { AppBtn, AppImage } from 'devkit-base-components';
 import AppMenu from './AppMenu.vue';
-
+import { useRouter } from 'vue-router';
+const { push } = useRouter()
+const logout = () => {
+  localStorage.removeItem('token')
+  localStorage.removeItem('access_token')
+  localStorage.removeItem('sidebar')
+  push('/login')
+}
 </script>
 <template>
   <Suspense>
@@ -16,6 +23,9 @@ import AppMenu from './AppMenu.vue';
         </aside>
         <AppHeader />
         <div class="page-content">
+          <div class="app-header">
+            <AppBtn label='logout' :action="logout" />
+          </div>
           <RouterView />
         </div>
       </div>

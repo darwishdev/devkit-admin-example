@@ -1,6 +1,6 @@
 {
   "name": "devkit-admin",
-  "version": "0.0.28",
+  "version": "0.0.172",
   "description": "Devkit Base Components is a Vue plugin offering a collection of reusable, headless components designed to streamline your Vue.js development workflow. Built for flexibility and maintainability, this library gives you complete control over styling and behavior, integrating seamlessly with PrimeVue, Vue Router, Vue I18n, and Tailwind CSS.",
   "module": "./dist/devkit_admin.es.js",
   "types": "./dist/types/devkit_admin.d.ts",
@@ -29,6 +29,12 @@
         "default": "./dist/form.es.js"
       }
     },
+    "./filemanager": {
+      "import": {
+        "types": "./dist/types/app/filemanager/index.d.ts",
+        "default": "./dist/filemanager.es.js"
+      }
+    },
     "./style": {
       "import": {
         "types": "./dist/style.d.ts",
@@ -50,7 +56,7 @@
     }
   },
   "scripts": {
-    "dev": "vite ",
+    "dev": "vite --host",
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "vite build",
     "storybook": "storybook dev -p 6006",
@@ -90,7 +96,7 @@
     "@tanstack/vue-query": "^5.66.0",
     "@vueuse/core": "^12.5.0",
     "devkit-apiclient": "^1.0.13",
-    "devkit-base-components": "^0.0.15",
+    "devkit-base-components": "^0.0.17",
     "dexie": "^4.0.11",
     "pinia": "^2.3.1",
     "primevue": "^4.2.2",
@@ -98,14 +104,15 @@
     "tailwindcss-primeui": "^0.4.0",
     "vue": "^3.0.0",
     "vue-i18n": "^10.0.5",
-    "vue-router": "^4.4.5"
+    "vue-router": "^4.4.5",
+    "zod": "^3.24.3"
   },
   "dependencies": {
-    "@buf/ahmeddarwish_devkit-api.bufbuild_es": "2.2.5-20250407045152-f36b62176a6d.1",
+    "@buf/ahmeddarwish_devkit-api.bufbuild_es": "2.2.5-20250501101752-78920ab3a77a.1",
     "@connectrpc/connect": "^2.0.1",
     "@connectrpc/connect-web": "^2.0.1",
+    "@formkit/inputs": "^1.6.9",
     "@vue/test-utils": "^2.4.6",
-    "devkit-admin": "link:../../../../Library/pnpm/global/5/node_modules/devkit-admin",
     "primeicons": "^7.0.0",
     "vitest": "^3.0.7"
   },
@@ -114,5 +121,5 @@
       "devkit-admin": "link:../../../../Library/pnpm/global/5/node_modules/devkit-admin"
     }
   },
-  "yalcSig": "2e349b9ef5dd3be16d306da10a8899fe"
+  "yalcSig": "7a3c7c1e0bd297e75866fa6e57fe0b07"
 }
