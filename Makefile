@@ -8,7 +8,7 @@ sync_api:
 deploy:
 	pnpm run build && scp -r dist/* ybl:src/apps/clients/admin.abchotels-eg.com/
 install:
-	pnpm config set @buf:registry https://buf.build/gen/npm/v1/ && rm -rf node_modules &&  pnpm i 
+	pnpm config set @buf:registry https://buf.build/gen/npm/v1/ && rm -rf node_modules &&  pnpm i && make link
 
 run:
 	pnpm run dev

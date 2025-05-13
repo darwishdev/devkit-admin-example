@@ -9,7 +9,7 @@ import { DialogService } from 'primevue';
 import { ToastService } from 'primevue';
 import { createPinia } from 'pinia'
 import { plugin } from '@formkit/vue'
-import formkitConfig from './formkit.config'
+import { formKitConfig } from "devkit-admin/form"
 import DevkitAdminPlugin, { type DevkitAdminConfig } from 'devkit-admin';
 import DevkitBaseComponentsPlugin, { type DevkitBaseConfig } from 'devkit-base-components';
 import App from './App.vue';
@@ -32,10 +32,12 @@ const adminConfig: DevkitAdminConfig<typeof apiClient> = {
   iconFindApi: 'iconFind',
   filesHandler: {
     fileList: 'galleryList',
+    fileDelete: 'fileDelete',
     bucketList: 'bucketList',
+    fileBulkCreate: 'fileCreateBulk',
+    fileDeleteByBucket: 'fileDeleteByBucket',
     bucketCreateUpdate: 'bucketCreateUpdate',
     fileCreate: 'fileCreate',
-    fileBulkCreate: 'fileCreateBulk'
   }
 }
 const queryClient = new QueryClient({
@@ -46,14 +48,19 @@ const queryClient = new QueryClient({
 
   },
 })
+
+app.use(router)
 app.use(VueQueryPlugin, {
   queryClient
 })
 app.use(pinia)
 app.use(ToastService)
 app.use(DialogService)
+app.use(PrimeVue, {
+  theme: 'none',
+})
 app.use(DevkitBaseComponentsPlugin, baseConfig)
-app.use(plugin, formkitConfig())
+app.use(plugin, formKitConfig({}))
 const i18n = createI18n({
   locale: 'en',
   fallbackLocale: 'en',
@@ -68,9 +75,6 @@ const i18n = createI18n({
     }
   }
 })
-app.use(PrimeVue, {
-  theme: 'none',
-}).use(i18n)
-app.use(router)
+app.use(i18n)
   .use(DevkitAdminPlugin, adminConfig)
   .mount('#app')
