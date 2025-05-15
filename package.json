@@ -10,7 +10,8 @@
     "lint": "eslint --ext .js,.ts,.vue --ignore-path .gitignore --fix src"
   },
   "dependencies": {
-    "@buf/ahmeddarwish_devkit-api.bufbuild_es": "2.3.0-20250501101752-78920ab3a77a.1",
+    "@buf/ahmeddarwish_devkit-api.bufbuild_es": "2.3.0-20250513140625-d5ce5f9cbcad.1",
+    "@bufbuild/protobuf": "^2.4.0",
     "@connectrpc/connect": "^2.0.0",
     "@connectrpc/connect-web": "^2.0.0",
     "@formkit/core": "^1.6.9",

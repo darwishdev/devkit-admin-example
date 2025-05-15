@@ -1,4 +1,5 @@
 # Logs
+.yalc
 logs
 *.log
 npm-debug.log*

@@ -9,14 +9,17 @@ importers:
   .:
     dependencies:
       '@buf/ahmeddarwish_devkit-api.bufbuild_es':
-        specifier: 2.3.0-20250501101752-78920ab3a77a.1
-        version: 2.3.0-20250501101752-78920ab3a77a.1(@bufbuild/protobuf@2.2.5)
+        specifier: 2.3.0-20250513140625-d5ce5f9cbcad.1
+        version: 2.3.0-20250513140625-d5ce5f9cbcad.1(@bufbuild/protobuf@2.4.0)
+      '@bufbuild/protobuf':
+        specifier: ^2.4.0
+        version: 2.4.0
       '@connectrpc/connect':
         specifier: ^2.0.0
-        version: 2.0.2(@bufbuild/protobuf@2.2.5)
+        version: 2.0.2(@bufbuild/protobuf@2.4.0)
       '@connectrpc/connect-web':
         specifier: ^2.0.0
-        version: 2.0.2(@bufbuild/protobuf@2.2.5)(@connectrpc/connect@2.0.2(@bufbuild/protobuf@2.2.5))
+        version: 2.0.2(@bufbuild/protobuf@2.4.0)(@connectrpc/connect@2.0.2(@bufbuild/protobuf@2.4.0))
       '@formkit/core':
         specifier: ^1.6.9
         version: 1.6.9
@@ -37,10 +40,10 @@ importers:
         version: 5.72.0(vue@3.5.13(typescript@5.7.3))
       devkit-apiclient:
         specifier: ^1.0.13
-        version: 1.0.13(@connectrpc/connect-web@2.0.2(@bufbuild/protobuf@2.2.5)(@connectrpc/connect@2.0.2(@bufbuild/protobuf@2.2.5)))(@connectrpc/connect@2.0.2(@bufbuild/protobuf@2.2.5))
+        version: 1.0.13(@connectrpc/connect-web@2.0.2(@bufbuild/protobuf@2.4.0)(@connectrpc/connect@2.0.2(@bufbuild/protobuf@2.4.0)))(@connectrpc/connect@2.0.2(@bufbuild/protobuf@2.4.0))
       devkit-base-components:
         specifier: ^0.0.15
-        version: 0.0.15(devkit-apiclient@1.0.13(@connectrpc/connect-web@2.0.2(@bufbuild/protobuf@2.2.5)(@connectrpc/connect@2.0.2(@bufbuild/protobuf@2.2.5)))(@connectrpc/connect@2.0.2(@bufbuild/protobuf@2.2.5)))(dexie@4.0.11)(primevue@4.3.3(vue@3.5.13(typescript@5.7.3)))(tailwindcss-primeui@0.4.0(tailwindcss@3.4.17))(tailwindcss@3.4.17)(vue-i18n@10.0.7(vue@3.5.13(typescript@5.7.3)))(vue-router@4.5.0(vue@3.5.13(typescript@5.7.3)))(vue@3.5.13(typescript@5.7.3))
+        version: 0.0.15(devkit-apiclient@1.0.13(@connectrpc/connect-web@2.0.2(@bufbuild/protobuf@2.4.0)(@connectrpc/connect@2.0.2(@bufbuild/protobuf@2.4.0)))(@connectrpc/connect@2.0.2(@bufbuild/protobuf@2.4.0)))(dexie@4.0.11)(primevue@4.3.3(vue@3.5.13(typescript@5.7.3)))(tailwindcss-primeui@0.4.0(tailwindcss@3.4.17))(tailwindcss@3.4.17)(vue-i18n@10.0.7(vue@3.5.13(typescript@5.7.3)))(vue-router@4.5.0(vue@3.5.13(typescript@5.7.3)))(vue@3.5.13(typescript@5.7.3))
       dexie:
         specifier: ^4.0.11
         version: 4.0.11
@@ -625,8 +628,8 @@ packages:
     resolution: {integrity: sha512-H45s8fVLYjbhFH62dIJ3WtmJ6RSPt/3DRO0ZcT2SUiYiQyz3BLVb9ADEnLl91m74aQPS3AzzeajZHYOalWe3bg==}
     engines: {node: '>=6.9.0'}
 
-  '@buf/ahmeddarwish_devkit-api.bufbuild_es@2.3.0-20250501101752-78920ab3a77a.1':
-    resolution: {tarball: https://buf.build/gen/npm/v1/@buf/ahmeddarwish_devkit-api.bufbuild_es/-/ahmeddarwish_devkit-api.bufbuild_es-2.3.0-20250501101752-78920ab3a77a.1.tgz}
+  '@buf/ahmeddarwish_devkit-api.bufbuild_es@2.3.0-20250513140625-d5ce5f9cbcad.1':
+    resolution: {tarball: https://buf.build/gen/npm/v1/@buf/ahmeddarwish_devkit-api.bufbuild_es/-/ahmeddarwish_devkit-api.bufbuild_es-2.3.0-20250513140625-d5ce5f9cbcad.1.tgz}
     peerDependencies:
       '@bufbuild/protobuf': ^2.3.0
 
@@ -635,8 +638,8 @@ packages:
     peerDependencies:
       '@bufbuild/protobuf': ^2.3.0
 
-  '@bufbuild/protobuf@2.2.5':
-    resolution: {integrity: sha512-/g5EzJifw5GF8aren8wZ/G5oMuPoGeS6MQD3ca8ddcvdXR5UELUfdTZITCGNhNXynY/AYl3Z4plmxdj/tRl/hQ==}
+  '@bufbuild/protobuf@2.4.0':
+    resolution: {integrity: sha512-RN9M76x7N11QRihKovEglEjjVCQEA9PRBVnDgk9xw8JHLrcUrp4FpAVSPSH91cNbcTft3u2vpLN4GMbiKY9PJw==}
 
   '@connectrpc/connect-web@2.0.2':
     resolution: {integrity: sha512-QANMFPiL2o66BdBEctg4TsQLe5ozsBLqcle3dCBp7BwGlNGTY6NnNnqmt+YRnpeMW88GgomJwWNMGCrRD9pRKA==}
@@ -3640,25 +3643,25 @@ snapshots:
       '@babel/helper-string-parser': 7.25.9
       '@babel/helper-validator-identifier': 7.25.9
 
-  '@buf/ahmeddarwish_devkit-api.bufbuild_es@2.3.0-20250501101752-78920ab3a77a.1(@bufbuild/protobuf@2.2.5)':
+  '@buf/ahmeddarwish_devkit-api.bufbuild_es@2.3.0-20250513140625-d5ce5f9cbcad.1(@bufbuild/protobuf@2.4.0)':
     dependencies:
-      '@buf/bufbuild_protovalidate.bufbuild_es': 2.3.0-20240920164238-5a7b106cbb87.1(@bufbuild/protobuf@2.2.5)
-      '@bufbuild/protobuf': 2.2.5
+      '@buf/bufbuild_protovalidate.bufbuild_es': 2.3.0-20240920164238-5a7b106cbb87.1(@bufbuild/protobuf@2.4.0)
+      '@bufbuild/protobuf': 2.4.0
 
-  '@buf/bufbuild_protovalidate.bufbuild_es@2.3.0-20240920164238-5a7b106cbb87.1(@bufbuild/protobuf@2.2.5)':
+  '@buf/bufbuild_protovalidate.bufbuild_es@2.3.0-20240920164238-5a7b106cbb87.1(@bufbuild/protobuf@2.4.0)':
     dependencies:
-      '@bufbuild/protobuf': 2.2.5
+      '@bufbuild/protobuf': 2.4.0
 
-  '@bufbuild/protobuf@2.2.5': {}
+  '@bufbuild/protobuf@2.4.0': {}
 
-  '@connectrpc/connect-web@2.0.2(@bufbuild/protobuf@2.2.5)(@connectrpc/connect@2.0.2(@bufbuild/protobuf@2.2.5))':
+  '@connectrpc/connect-web@2.0.2(@bufbuild/protobuf@2.4.0)(@connectrpc/connect@2.0.2(@bufbuild/protobuf@2.4.0))':
     dependencies:
-      '@bufbuild/protobuf': 2.2.5
-      '@connectrpc/connect': 2.0.2(@bufbuild/protobuf@2.2.5)
+      '@bufbuild/protobuf': 2.4.0
+      '@connectrpc/connect': 2.0.2(@bufbuild/protobuf@2.4.0)
 
-  '@connectrpc/connect@2.0.2(@bufbuild/protobuf@2.2.5)':
+  '@connectrpc/connect@2.0.2(@bufbuild/protobuf@2.4.0)':
     dependencies:
-      '@bufbuild/protobuf': 2.2.5
+      '@bufbuild/protobuf': 2.4.0
 
   '@esbuild/aix-ppc64@0.25.2':
     optional: true
@@ -4516,14 +4519,14 @@ snapshots:
   detect-libc@2.0.3:
     optional: true
 
-  devkit-apiclient@1.0.13(@connectrpc/connect-web@2.0.2(@bufbuild/protobuf@2.2.5)(@connectrpc/connect@2.0.2(@bufbuild/protobuf@2.2.5)))(@connectrpc/connect@2.0.2(@bufbuild/protobuf@2.2.5)):
+  devkit-apiclient@1.0.13(@connectrpc/connect-web@2.0.2(@bufbuild/protobuf@2.4.0)(@connectrpc/connect@2.0.2(@bufbuild/protobuf@2.4.0)))(@connectrpc/connect@2.0.2(@bufbuild/protobuf@2.4.0)):
     dependencies:
-      '@connectrpc/connect': 2.0.2(@bufbuild/protobuf@2.2.5)
-      '@connectrpc/connect-web': 2.0.2(@bufbuild/protobuf@2.2.5)(@connectrpc/connect@2.0.2(@bufbuild/protobuf@2.2.5))
+      '@connectrpc/connect': 2.0.2(@bufbuild/protobuf@2.4.0)
+      '@connectrpc/connect-web': 2.0.2(@bufbuild/protobuf@2.4.0)(@connectrpc/connect@2.0.2(@bufbuild/protobuf@2.4.0))
 
-  devkit-base-components@0.0.15(devkit-apiclient@1.0.13(@connectrpc/connect-web@2.0.2(@bufbuild/protobuf@2.2.5)(@connectrpc/connect@2.0.2(@bufbuild/protobuf@2.2.5)))(@connectrpc/connect@2.0.2(@bufbuild/protobuf@2.2.5)))(dexie@4.0.11)(primevue@4.3.3(vue@3.5.13(typescript@5.7.3)))(tailwindcss-primeui@0.4.0(tailwindcss@3.4.17))(tailwindcss@3.4.17)(vue-i18n@10.0.7(vue@3.5.13(typescript@5.7.3)))(vue-router@4.5.0(vue@3.5.13(typescript@5.7.3)))(vue@3.5.13(typescript@5.7.3)):
+  devkit-base-components@0.0.15(devkit-apiclient@1.0.13(@connectrpc/connect-web@2.0.2(@bufbuild/protobuf@2.4.0)(@connectrpc/connect@2.0.2(@bufbuild/protobuf@2.4.0)))(@connectrpc/connect@2.0.2(@bufbuild/protobuf@2.4.0)))(dexie@4.0.11)(primevue@4.3.3(vue@3.5.13(typescript@5.7.3)))(tailwindcss-primeui@0.4.0(tailwindcss@3.4.17))(tailwindcss@3.4.17)(vue-i18n@10.0.7(vue@3.5.13(typescript@5.7.3)))(vue-router@4.5.0(vue@3.5.13(typescript@5.7.3)))(vue@3.5.13(typescript@5.7.3)):
     dependencies:
-      devkit-apiclient: 1.0.13(@connectrpc/connect-web@2.0.2(@bufbuild/protobuf@2.2.5)(@connectrpc/connect@2.0.2(@bufbuild/protobuf@2.2.5)))(@connectrpc/connect@2.0.2(@bufbuild/protobuf@2.2.5))
+      devkit-apiclient: 1.0.13(@connectrpc/connect-web@2.0.2(@bufbuild/protobuf@2.4.0)(@connectrpc/connect@2.0.2(@bufbuild/protobuf@2.4.0)))(@connectrpc/connect@2.0.2(@bufbuild/protobuf@2.4.0))
       dexie: 4.0.11
       primevue: 4.3.3(vue@3.5.13(typescript@5.7.3))
       tailwindcss: 3.4.17

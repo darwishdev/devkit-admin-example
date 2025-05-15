@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import type { apiClient } from "@/api/apiClient";
 import type {
   AuthLoginRequest,
   AuthLoginResponse,
@@ -7,7 +8,7 @@ import AppForm, { type AppFormProps } from "devkit-admin/form";
 
 // export type AppFormProps<TKey extends string, TFormRequest extends StringUnkownRecord = StringUnkownRecord, TApiRequest extends StringUnkownRecord = TFormRequest, TApiResponse extends StringUnkownRecord = StringUnkownRecord, TFindRequestPropName extends string | undefined = 'recordId', TFindResponsePropName extends string | undefined = 'request', TFindCallbakResponse = unknown, TCallbakResponse = unknown> = {
 const loginFormProps: AppFormProps<
-  "login",
+  typeof apiClient,
   AuthLoginRequest,
   AuthLoginRequest,
   AuthLoginResponse

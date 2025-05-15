@@ -1,7 +1,3 @@
-<script setup lang="ts">
-import FileManager from 'devkit-admin/filemanager'
-</script>
-
 <template>
-	<FileManager />
+  <h2>asdasd</h2>
 </template>

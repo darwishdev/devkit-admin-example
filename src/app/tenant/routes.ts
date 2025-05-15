@@ -10,6 +10,7 @@ export default
 			name: 'tenant_list',
 			component: TenantListView,
 		},
+
 		{
 			path: '/tenants/section',
 			name: 'section_list',
@@ -20,6 +21,7 @@ export default
 			name: 'partial_list',
 			component: PartialListView,
 		},
+
 		{
 			path: 'tenants/page',
 			name: 'page_list',
