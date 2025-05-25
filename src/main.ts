@@ -15,7 +15,7 @@ import DevkitBaseComponentsPlugin, { type DevkitBaseConfig } from 'devkit-base-c
 import App from './App.vue';
 
 import { create } from '@bufbuild/protobuf';
-import { FileCreateBulkRequestSchema, FileCreateRequestSchema  } from '@buf/ahmeddarwish_devkit-api.bufbuild_es/devkit/v1/public_storage_pb';
+import { FileCreateBulkRequestSchema, FileCreateRequestSchema } from '@buf/ahmeddarwish_devkit-api.bufbuild_es/devkit/v1/public_storage_pb';
 import { createApp } from 'vue';
 const pinia = createPinia()
 const app = createApp(App)
@@ -33,10 +33,19 @@ const adminConfig: DevkitAdminConfig<typeof apiClient> = {
   apiClient,
   locales: ['en', 'ar'],
   iconFindApi: 'iconFind',
+  authHandler: {
+    login: 'authLogin',
+    allowedProviders: ['google'],
+    providerLogin: 'authLoginProvider',
+    providerLoginCallback: 'authLoginProviderCallback',
+    resetPasswordEmail: 'authResetPasswordEmail',
+    resetPassword: 'authResetPassword'
+  },
   filesHandler: {
     fileList: 'galleryList',
-    bulkRequestMapper: (req) => create(FileCreateBulkRequestSchema , req) ,
-    requestMapper: (req) => create(FileCreateRequestSchema , req),
+    uploadUrl: `${import.meta.env.VITE_API_URL}upload`,
+    bulkRequestMapper: (req) => create(FileCreateBulkRequestSchema, req),
+    requestMapper: (req) => create(FileCreateRequestSchema, req),
     fileDelete: 'fileDelete',
     bucketList: 'bucketList',
     fileBulkCreate: 'fileCreateBulk',

@@ -1,30 +1,51 @@
 <script lang="ts" setup>
-import { AppBtn, AppImage } from 'devkit-base-components';
-import AppMenu from './AppMenu.vue';
-import { useRouter } from 'vue-router';
-const { push } = useRouter()
+import { AppMenu } from "devkit-base-components";
+import { useRouter } from "vue-router";
+import type { NavigationBarItem } from "@buf/ahmeddarwish_devkit-api.bufbuild_es/devkit/v1/accounts_navigation_bar_pb";
+const navigationBar: NavigationBarItem[] = JSON.parse(
+  localStorage.getItem("sidebar")!,
+);
+const removeTypeName = (obj: any): any => {
+  if (Array.isArray(obj)) {
+    return obj.map(removeTypeName);
+  } else if (obj !== null && typeof obj === "object") {
+    const cleaned: any = {};
+    for (const key in obj) {
+      if (
+        key !== "$typeName" &&
+        Object.prototype.hasOwnProperty.call(obj, key)
+      ) {
+        cleaned[key] = removeTypeName(obj[key]);
+      }
+    }
+    return cleaned;
+  }
+  return obj;
+};
+const cleanedData = removeTypeName(navigationBar);
+const { push } = useRouter();
 const logout = () => {
-  localStorage.removeItem('token')
-  localStorage.removeItem('access_token')
-  localStorage.removeItem('sidebar')
-  push('/login')
-}
+  localStorage.removeItem("token");
+  localStorage.removeItem("access_token");
+  localStorage.removeItem("sidebar");
+  push("/login");
+};
 </script>
 <template>
   <Suspense>
     <template #default>
       <div>
         <aside class="sidebar">
-          <div class="sidebar__header flex items-center gap-md  mb-8">
-            <AppImage src='/abchotels/abc_logo.png' width="100" />
-            <strong class='logo'>ABC TECH</strong>
-          </div>
-          <AppMenu />
+          <AppMenu
+            :isVertical="true"
+            logo="/abchotels/abc_logo.png"
+            :items="cleanedData"
+          />
         </aside>
         <AppHeader />
         <div class="page-content">
           <div class="app-header">
-            <AppBtn label='logout' :action="logout" />
+            <AppBtn label="logout" :action="logout" />
           </div>
           <RouterView />
         </div>
@@ -43,7 +64,7 @@ const logout = () => {
 .sidebar {
   background-color: #fff;
   z-index: 3;
-  transition: width .2s;
+  transition: width 0.2s;
   top: 0;
   left: 0;
   height: 100vh;

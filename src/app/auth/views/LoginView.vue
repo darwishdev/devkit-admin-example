@@ -1,73 +1,17 @@
 <script setup lang="ts">
-import type { apiClient } from "@/api/apiClient";
-import type {
-  AuthLoginRequest,
-  AuthLoginResponse,
-} from "@buf/ahmeddarwish_devkit-api.bufbuild_es/devkit/v1/accounts_auth_pb";
-import AppForm, { type AppFormProps } from "devkit-admin/form";
-
-// export type AppFormProps<TKey extends string, TFormRequest extends StringUnkownRecord = StringUnkownRecord, TApiRequest extends StringUnkownRecord = TFormRequest, TApiResponse extends StringUnkownRecord = StringUnkownRecord, TFindRequestPropName extends string | undefined = 'recordId', TFindResponsePropName extends string | undefined = 'request', TFindCallbakResponse = unknown, TCallbakResponse = unknown> = {
-const loginFormProps: AppFormProps<
-  typeof apiClient,
-  AuthLoginRequest,
-  AuthLoginRequest,
-  AuthLoginResponse
-> = {
-  context: {
-    title: "login",
-    formKey: "login",
-    resetOnSuccess: true,
-    isLazy: true,
-    options: {},
-    submitHandler: {
-      endpoint: "authLogin",
-      redirectRoute: "dashboard",
-      callback: (response) => {
-        if (response.navigationBar)
-          localStorage.setItem(
-            "sidebar",
-            JSON.stringify(response.navigationBar),
-          );
-        // 2. Cache the access token
-        if (response.loginInfo) {
-          localStorage.setItem("token", response.loginInfo.accessToken);
-        }
-        // 3. Cache the user info
-        if (response.user)
-          localStorage.setItem("user_info", JSON.stringify(response.user));
-      },
-    },
-    sections: {
-      user_info: {
-        isTitleHidden: true,
-        isTransparent: true,
-        inputs: [
-          {
-            $formkit: "text",
-            prefixIcon: "tools",
-            outerClass: "col-12 sm:col-6 md:col-5",
-            name: "loginCode",
-            validation: "required",
-            placeholder: "user name",
-            label: "userName",
-          },
-          {
-            $formkit: "password",
-            prefixIcon: "tools",
-            outerClass: "col-12 sm:col-6 md:col-5",
-            name: "userPassword",
-            validation: "required",
-            placeholder: "password",
-            label: "password",
-          },
-        ],
-      },
-    },
-  },
-};
+import { LoginForm } from "devkit-admin/form";
+const baseImageUrl = import.meta.env.VITE_BASE_IMAGE_URL;
 </script>
 <template>
   <div class="card flex justify-center">
-    <AppForm :context="loginFormProps.context" />
+    <div
+      class="w-3/5 h-dvh"
+      :style="{
+        background: `url(${baseImageUrl}/images/login.webp) center / cover no-repeat`,
+      }"
+    />
+    <LoginForm
+      class="w-2/5 p-4 flex flex-col gap-6 justify-center items-center"
+    />
   </div>
 </template>
